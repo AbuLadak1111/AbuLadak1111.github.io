@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cute Pink Notepad</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #ffe6f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff66b2;
+            text-align: center;
+            font-size: 3em;
+            margin-top: 10px;
+        }
+
+        .notepad-container {
+            background-color: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: left;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table th,
+        table td {
+            padding: 15px;
+            border: 1px solid #ff99cc;
+        }
+
+        table th {
+            background-color: #ff66b2;
+            color: white;
+        }
+
+        .add-task {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border: 2px solid #ff66b2;
+            border-radius: 8px;
+            background-color: #fff0f5;
+        }
+
+        .btn-add {
+            background-color: #ff66b2;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .btn-add:hover {
+            background-color: #ff99cc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>💖 My Cute Pink Notepad 💖</h1>
+
+    <div class="notepad-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Work</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="taskTable">
+                <!-- Tugas akan ditambahkan di sini -->
+            </tbody>
+        </table>
+
+        <h3>Add a new task:</h3>
+        <input type="text" id="workInput" class="add-task" placeholder="Work">
+        <input type="text" id="descInput" class="add-task" placeholder="Description">
+        <input type="text" id="deadlineInput" class="add-task" placeholder="Deadline (e.g., 2024-10-07)">
+        <input type="text" id="statusInput" class="add-task" placeholder="Status">
+        <button class="btn-add" onclick="addTask()">Add Task</button>
+    </div>
+
+    <script>
+        let taskCount = 0;
+
+        function addTask() {
+            // Get the values from input fields
+            const work = document.getElementById('workInput').value;
+            const desc = document.getElementById('descInput').value;
+            const deadline = document.getElementById('deadlineInput').value;
+            const status = document.getElementById('statusInput').value;
+
+            if (work && desc && deadline && status) {
+                taskCount++;
+
+                // Create a new row in the table
+                const table = document.getElementById('taskTable');
+                const row = table.insertRow();
+
+                // Insert cells into the row
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                const cell5 = row.insertCell(4);
+
+                // Fill the cells with the input data
+                cell1.innerHTML = taskCount;
+                cell2.innerHTML = work;
+                cell3.innerHTML = desc;
+                cell4.innerHTML = deadline;
+                cell5.innerHTML = status;
+
+                // Clear input fields after adding the task
+                document.getElementById('workInput').value = '';
+                document.getElementById('descInput').value = '';
+                document.getElementById('deadlineInput').value = '';
+                document.getElementById('statusInput').value = '';
+            } else {
+                alert('Please fill in all fields!');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
